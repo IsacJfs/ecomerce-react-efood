@@ -1,24 +1,33 @@
 import * as S from './style'
+import { RestaurnatsList } from '../../models/DataJSON/listaRestaurantes'
+type Props = {
+  restaurantId: string
+}
 
-const RestaurantMenu = () => (
-  <S.Menu>
-    <S.Banner>
-      <S.BannerContent className="container">
-        <S.Categorie>Italiana</S.Categorie>
-        <S.Title>La Dolce Vita Trattoria</S.Title>
-      </S.BannerContent>
-    </S.Banner>
-    <div>
-      Lista de pratos
-      <img src="" alt="" />
-      <h4>Pizza Marguerita</h4>
-      <p>
-        A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-        manjericão fresco e um toque de azeite. Sabor e simplicidade!
-      </p>
-      <a href=""></a>
-    </div>
-  </S.Menu>
-)
+const RestaurantMenu = ({ restaurantId }: Props) => {
+  const restaurant = RestaurnatsList.find((rest) => rest.id === restaurantId)
+  const menuItens = restaurant ? restaurant.menu : []
+
+  return (
+    <S.Menu>
+      <S.Banner backgroundImage={restaurant?.image as string}>
+        <S.BannerContent className="container">
+          <S.Categorie> {restaurant?.categorie}</S.Categorie>
+          <S.Title>{restaurant?.name}</S.Title>
+        </S.BannerContent>
+      </S.Banner>
+      <S.CardContainer className="container">
+        {menuItens.map((menu) => (
+          <S.Card key={menu.idMenu}>
+            <S.imageMenu src={menu.image} alt={menu.name} />
+            <h4>{menu.name}</h4>
+            <p>{menu.description}</p>
+            <a href="">Saiba Mais</a>
+          </S.Card>
+        ))}
+      </S.CardContainer>
+    </S.Menu>
+  )
+}
 
 export default RestaurantMenu
