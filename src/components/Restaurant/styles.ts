@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { colors, displayFlex, displayFlexCol } from '../../styles'
 import { buttonTagStyle } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   position: relative;
@@ -50,7 +51,7 @@ export const Tag = styled.p`
   margin-left: 8px;
 `
 
-export const Button = styled.a`
+export const Button = styled(Link)`
   ${buttonTagStyle}
 
   @media (max-width: 768px) {

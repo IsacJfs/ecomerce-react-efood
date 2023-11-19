@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { colors, displayFlexCol } from '../../styles'
+import { buttonTagStyle, colors, displayFlexCol } from '../../styles'
 
 interface BannerProps {
-  backgroundImage: string
+  $backgroundimage: string
 }
 
 export const Banner = styled.div<BannerProps>`
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: url(${(props) => props.$backgroundimage});
   background-repeat: no-repeat;
   background-size: cover;
   height: 280px;
+  margin-bottom: 56px;
 `
 
 export const BannerContent = styled.div`
@@ -37,6 +38,10 @@ export const Card = styled.div`
   background-color: ${colors.pinkDark};
   color: ${colors.pinkMedium};
   padding: 8px;
+  height: 336px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const CardContainer = styled.section`
@@ -47,4 +52,27 @@ export const CardContainer = styled.section`
 
 export const imageMenu = styled.img`
   width: 100%;
+`
+
+export const Button = styled.a`
+  ${buttonTagStyle}
+  background-color: ${colors.pinkLight};
+  color: ${colors.pinkDark};
+  width: 100%;
+  margin-top: 4px;
+`
+
+export const Name = styled.h4`
+  margin: 8px 0;
+  font-size: 16px;
+`
+
+export const Descricao = styled.p`
+  line-height: 22px;
+  font-size: 14px;
+  max-height: 88px;
+`
+
+export const CardHeader = styled.div`
+  ${displayFlexCol}
 `
